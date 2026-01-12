@@ -9,7 +9,7 @@
 
 TaskFlow is a production-grade SaaS platform designed to streamline project management for enterprise teams and high-performance consultants. It enables real-time collaboration through a sophisticated analytics-driven approach, ensuring efficient workflow execution and data transparency suitable for scaling organizations.
 
-[Live Demo](YOUR_DEPLOYMENT_URL)  
+[Live Demo](https://task-flow-demo-v1.web.app)  
 *Note: The demo features full authentication and database functionality.*
 
 ## Key Features
@@ -44,7 +44,7 @@ TaskFlow is a production-grade SaaS platform designed to streamline project mana
 *   **Language**: Strict TypeScript
 
 ### Deployment
-*   **Hosting**: [Your hosting platform]
+*   **Hosting**: Firebase Hosting
 
 ## Architecture Highlights
 

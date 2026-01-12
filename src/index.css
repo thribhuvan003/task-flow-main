@@ -154,6 +154,8 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
+    width: 100%;
   }
 }
 
@@ -161,47 +163,216 @@
   .glass-effect {
     @apply bg-card/80 backdrop-blur-md;
   }
-  
+
   .gradient-primary {
     background: var(--gradient-primary);
   }
-  
+
   .gradient-accent {
     background: var(--gradient-accent);
   }
-  
+
   .shadow-card {
     box-shadow: var(--shadow-md);
   }
-  
+
   .shadow-card-hover {
     box-shadow: var(--shadow-lg);
   }
-  
+
   .animate-fade-in {
     animation: fadeIn 0.3s ease-out;
   }
-  
+
   .animate-slide-up {
     animation: slideUp 0.3s ease-out;
   }
-  
+
   .animate-scale-in {
     animation: scaleIn 0.2s ease-out;
   }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile-First Responsive Utilities */
+@layer utilities {
+
+  /* Responsive Typography */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  .text-responsive-2xl {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+
+  /* Touch-Friendly Interactive Elements */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  .touch-target-lg {
+    @apply min-h-[48px] min-w-[48px];
+  }
+
+  /* Responsive Spacing */
+  .spacing-responsive {
+    @apply space-y-4 sm:space-y-6 md:space-y-8;
+  }
+
+  .padding-responsive {
+    @apply p-4 sm:p-6 md:p-8;
+  }
+
+  .padding-responsive-sm {
+    @apply p-2 sm:p-3 md:p-4;
+  }
+
+  /* Responsive Containers */
+  .container-responsive {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-responsive-sm {
+    @apply w-full max-w-3xl mx-auto px-4 sm:px-6;
+  }
+
+  /* Mobile Navigation */
+  .mobile-nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-colors;
+  }
+
+  /* Responsive Grid */
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  }
+
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6;
+  }
+
+  /* Mobile-Optimized Forms */
+  .input-mobile {
+    @apply text-base;
+    /* Prevents zoom on iOS */
+  }
+
+  /* Scrollable Container for Mobile */
+  .scroll-container-mobile {
+    @apply overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0;
+  }
+
+  /* Hide on Mobile */
+  .hide-mobile {
+    @apply hidden sm:block;
+  }
+
+  /* Show only on Mobile */
+  .show-mobile {
+    @apply block sm:hidden;
+  }
+
+  /* Responsive Flex */
+  .flex-responsive {
+    @apply flex flex-col sm:flex-row gap-4;
+  }
+
+  /* Card Responsive */
+  .card-responsive {
+    @apply rounded-lg sm:rounded-xl shadow-card hover:shadow-card-hover transition-shadow;
+  }
+}
+
+/* Mobile-Specific Media Query Overrides */
+@media (max-width: 640px) {
+
+  /* Ensure body doesn't overflow horizontally */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Make tables responsive */
+  table {
+    @apply block overflow-x-auto;
+  }
+
+  /* Adjust dialog/modal widths for mobile */
+  [role="dialog"] {
+    @apply max-w-[95vw];
+  }
+
+  /* Better mobile menu spacing */
+  [role="menu"] {
+    @apply max-h-[80vh] overflow-y-auto;
+  }
+}
+
+/* Tablet-Specific Adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container-responsive {
+    @apply px-6;
+  }
+}
+
+/* Prevent horizontal scroll on small screens */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  * {
+    max-width: 100%;
+  }
 }
